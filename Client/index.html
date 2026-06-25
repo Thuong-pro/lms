@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./src/Assets/Images/logoimage.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+    <script>
+      // 1. Kiểm tra xem người dùng đã từng chọn theme chưa (lưu trong LocalStorage)
+      const savedTheme = localStorage.getItem("theme");
+      
+      // 2. Nếu chưa chọn, kiểm tra xem máy tính của họ đang để chế độ Dark Mode mặc định không
+      const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+      // 3. Quyết định theme sẽ áp dụng: Ưu tiên lựa chọn cũ > Ưu tiên hệ thống > Mặc định là 'light'
+      const finalTheme = savedTheme || (systemPrefersDark ? "dark" : "light");
+
+      // 4. Áp dụng ngay lập tức vào thẻ html TRƯỚC KHI React kịp load
+      document.documentElement.setAttribute("data-theme", finalTheme);
+    </script>
+  </head>
+
+</html>
+    <title>Zero2One</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  </body>
+</html>
